@@ -1,27 +1,32 @@
 # React MathJax
-*(experimental)*
 
 React component to display math formulas written in AsciiMath or TeX.
+
+This is a fork of [react-mathjax](https://github.com/MatejMazur/react-mathjax) from MatejMazur which is itself a fork of [react-mathjax](https://github.com/SamyPesse/react-mathjax) from SamyPresse.
+
+This version supports input in ascii and tex.
+
+
 
 ![Example of usage](/example.gif)
 
 Based on the [react-mathjax](https://github.com/SamyPesse/react-mathjax) from SamyPesse. The main difference is in updated deps, syntax and extended options (delay of rendering and support for AsciiMath).
 
-## How to install
+## Install
 ```
-npm install @matejmazur/react-mathjax
+npm install https://github.com/wko27/react-mathjax --save
 ```
 
-## How to use
+## Usage
 ```jsx
-const MathJax = require('@matejmazur/react-mathjax')
+import MathJax from 'react-mathjax'
 const ascii = 'U = 1/(R_(si) + sum_(i=1)^n(s_n/lambda_n) + R_(se))'
 const tex = `f(x) = \\int_{-\\infty}^\\infty\\hat f(\\xi)\\,e^{2 \\pi i \\xi x}\\,d\\xi`
 
 module.exports = () => {
     return (
         <div>
-            <MathJax.Context>
+            <MathJax.Context input='ascii'>
                 <div>
                     This is an inline math formula: <MathJax.Node inline>{'a = b'}</MathJax.Node>
                     And a block one:
@@ -65,7 +70,7 @@ module.exports = () => {
 - Default: Official MathJax configuration
 
 ## Acknowledgements
-- This project was forked from [SamyPesse](https://github.com/SamyPesse) ([react-mathjax](https://github.com/SamyPesse/react-mathjax)).
+- This project was forked from [MatejMazur](https://github.com/MatejMazur) ([react-mathjax](https://github.com/MatejMazur/react-mathjax)).
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.

@@ -5,7 +5,7 @@
   "main": "./lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MatejMazur/react-mathjax.git"
+    "url": "git+https://github.com/wko27/react-mathjax.git"
   },
   "scripts": {
     "build": "babel --out-dir ./lib ./src"

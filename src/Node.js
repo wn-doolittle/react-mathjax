@@ -46,8 +46,12 @@ class Node extends React.Component {
   clear() {
     const MathJax = this.context.MathJax
 
-    if (!this.script || !MathJax) {
+    if (!this.script) {
       return
+    }
+
+    if (!MathJax) {
+      throw Error("Could not find MathJax while attempting clear! Probably MathJax script hasn't been loaded or MathJax.Context is not in the hierarchy")
     }
 
     const jax = MathJax.Hub.getJaxFor(this.script)
@@ -65,7 +69,7 @@ class Node extends React.Component {
     const MathJax = this.context.MathJax
 
     if (!MathJax) {
-      return
+      throw Error("Could not find MathJax while attempting typeset! Probably MathJax script hasn't been loaded or MathJax.Context is not in the hierarchy")
     }
 
     const text = this.props.children

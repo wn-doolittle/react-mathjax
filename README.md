@@ -6,7 +6,10 @@ This is a fork of [react-mathjax](https://github.com/MatejMazur/react-mathjax) f
 
 This includes the following changes:
 * Context object is a gate, i.e. it does not render its children until the MathJax script has finished loading
+  * this avoids the case when a MathJax.Node attempts to render before the Hub is available
+    * also added an Error which is thrown when MathJax.Node can't find a Hub
   * there's a loading props one can use to specify children before loading
+  * one can also disable this behavior completely by setting noGate props to true
 * added an onLoad props to Context which triggers when the MathJax script finishes loading
 * cleanup of the MathJax.Hub.Queue call to re-render a particular script tag
 

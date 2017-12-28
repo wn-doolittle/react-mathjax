@@ -54,7 +54,7 @@ class Context extends React.Component {
   }
 
   render() {
-    if (!this.state.loaded) {
+    if (!this.state.loaded && !this.props.noGate) {
       return this.props.loading
     }
 
@@ -71,7 +71,8 @@ Context.propTypes = {
   input: PropTypes.oneOf(['ascii', 'tex']),
   delay: PropTypes.number,
   options: PropTypes.object,
-  loading: PropTypes.node
+  loading: PropTypes.node,
+  noGate: PropTypes.boolean
 }
 
 Context.childContextTypes = {
@@ -85,6 +86,7 @@ Context.defaultProps = {
   delay: 0,
   options: {},
   loading: null,
+  noGate: false
 }
 
 export default Context

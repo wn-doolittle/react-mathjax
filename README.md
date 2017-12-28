@@ -4,12 +4,13 @@ React component to display math formulas written in AsciiMath or TeX.
 
 This is a fork of [react-mathjax](https://github.com/MatejMazur/react-mathjax) from MatejMazur which is itself a fork of [react-mathjax](https://github.com/SamyPesse/react-mathjax) from SamyPresse.
 
-This includes:
-* an onLoad props to Context which triggers when the MathJax script finishes loading
+This includes the following changes:
+* Context object is a gate, i.e. it does not render its children until the MathJax script has finished loading
+  * there's a loading props one can use to specify children before loading
+* added an onLoad props to Context which triggers when the MathJax script finishes loading
 * cleanup of the MathJax.Hub.Queue call to re-render a particular script tag
 
 ![Example of usage](/example.gif)
-
 Based on the [react-mathjax](https://github.com/SamyPesse/react-mathjax) from SamyPesse. The main difference is in updated deps, syntax and extended options (delay of rendering and support for AsciiMath).
 
 ## Install

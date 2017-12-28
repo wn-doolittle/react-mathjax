@@ -54,6 +54,10 @@ class Context extends React.Component {
   }
 
   render() {
+    if (!this.state.loaded) {
+      return this.props.loading
+    }
+
     const children = this.props.children
 
     return React.Children.only(children)
@@ -66,7 +70,8 @@ Context.propTypes = {
   script: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf([false])]),
   input: PropTypes.oneOf(['ascii', 'tex']),
   delay: PropTypes.number,
-  options: PropTypes.object
+  options: PropTypes.object,
+  loading: PropTypes.node
 }
 
 Context.childContextTypes = {
@@ -78,7 +83,8 @@ Context.defaultProps = {
   script: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML',
   input: 'ascii',
   delay: 0,
-  options: {}
+  options: {},
+  loading: null,
 }
 
 export default Context

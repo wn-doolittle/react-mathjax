@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import processMath from './process-math'
 
 const types = {
   ascii: 'asciimath',
@@ -75,34 +74,18 @@ class Node extends React.Component {
       this.clear()
     }
 
-    if (!forceUpdate && this.script) {
-      MathJax.Hub.Queue(
-        MathJax.Hub.Process(this.script, this.props.onRender)
-      );
-      // MathJax.Hub.Queue(() => {
-      //   const jax = MathJax.Hub.getJaxFor(this.script)
-
-      //   if (jax) {
-      //     jax.Text(text, this.props.onRender)
-      //   } else {
-      //     const script = this.setScriptText(text)
-      //     processMath(MathJax, script, this.props.onRender)
-      //   }
-      // })
-    } else {
-      const script = this.setScriptText(text)
-      MathJax.Hub.Queue(
-        MathJax.Hub.Process(script, this.props.onRender)
-      );
-
-      // processMath(MathJax, script, this.props.onRender)
+    if (forceUpdate || !this.script) {
+      this.setScriptText(text)
     }
+
+    MathJax.Hub.Queue(
+      MathJax.Hub.Process(this.script, this.props.onRender)
+    );
   }
 
   /**
    * Create a script
    * @param { String } text
-   * @return { DOMNode } script
    */
   setScriptText(text) {
     const inline = this.props.inline
@@ -119,8 +102,6 @@ class Node extends React.Component {
     } else {
       this.script.textContent = text
     }
-
-    return this.script
   }
 
   render() {

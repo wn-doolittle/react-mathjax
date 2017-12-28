@@ -12,13 +12,17 @@ class Node extends React.Component {
    */
   componentDidMount() {
     this.typeset()
+
+    if (!this.context.MathJax) {
+      throw Error("Could not find MathJax in componentDidMount! Probably MathJax script hasn't been loaded or MathJax.Context is not in the hierarchy")
+    }
   }
 
   /**
    * Update the jax, force update if the display mode changed
    */
   componentDidUpdate(prevProps) {
-    const forceUpdate = prevProps.inline !== this.props.inline
+    const forceUpdate = prevProps.inline !== this.props.inline || prevProps.children !== this.props.children
     this.typeset(forceUpdate)
   }
 
@@ -28,8 +32,7 @@ class Node extends React.Component {
   shouldComponentUpdate(nextProps, nextState, nextContext) {
     return (
       nextProps.children !== this.props.children ||
-      nextProps.inline !== this.props.inline ||
-      nextContext.MathJax !== this.context.MathJax
+      nextProps.inline !== this.props.inline
     )
   }
 
@@ -48,10 +51,6 @@ class Node extends React.Component {
 
     if (!this.script) {
       return
-    }
-
-    if (!MathJax) {
-      throw Error("Could not find MathJax while attempting clear! Probably MathJax script hasn't been loaded or MathJax.Context is not in the hierarchy")
     }
 
     const jax = MathJax.Hub.getJaxFor(this.script)

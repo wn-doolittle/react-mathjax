@@ -11,7 +11,7 @@ This includes the following changes:
   * there's a loading props one can use to specify children before loading
   * one can also disable this behavior completely by setting noGate props to true
 * added an onLoad props to Context which triggers when the MathJax script finishes loading
-* cleanup of the MathJax.Hub.Queue call to re-render a particular script tag
+* cleanup of the MathJax.Hub.Queue calls to re-render a particular script tag
 
 ![Example of usage](/example.gif)
 Based on the [react-mathjax](https://github.com/SamyPesse/react-mathjax) from SamyPesse. The main difference is in updated deps, syntax and extended options (delay of rendering and support for AsciiMath).

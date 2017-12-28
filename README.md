@@ -6,6 +6,8 @@ This is a fork of [react-mathjax](https://github.com/MatejMazur/react-mathjax) f
 
 This version supports input in ascii and tex.
 
+We also add an onLoad props to Context so one can debug when the script has finished loading.
+
 
 
 ![Example of usage](/example.gif)

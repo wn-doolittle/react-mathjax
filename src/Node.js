@@ -76,19 +76,26 @@ class Node extends React.Component {
     }
 
     if (!forceUpdate && this.script) {
-      MathJax.Hub.Queue(() => {
-        const jax = MathJax.Hub.getJaxFor(this.script)
+      MathJax.Hub.Queue(
+        MathJax.Hub.Process(this.script, this.props.onRender)
+      );
+      // MathJax.Hub.Queue(() => {
+      //   const jax = MathJax.Hub.getJaxFor(this.script)
 
-        if (jax) {
-          jax.Text(text, this.props.onRender)
-        } else {
-          const script = this.setScriptText(text)
-          processMath(MathJax, script, this.props.onRender)
-        }
-      })
+      //   if (jax) {
+      //     jax.Text(text, this.props.onRender)
+      //   } else {
+      //     const script = this.setScriptText(text)
+      //     processMath(MathJax, script, this.props.onRender)
+      //   }
+      // })
     } else {
       const script = this.setScriptText(text)
-      processMath(MathJax, script, this.props.onRender)
+      MathJax.Hub.Queue(
+        MathJax.Hub.Process(script, this.props.onRender)
+      );
+
+      // processMath(MathJax, script, this.props.onRender)
     }
   }
 

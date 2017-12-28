@@ -47,6 +47,10 @@ class Context extends React.Component {
     this.setState({
       loaded: true
     })
+
+    if (this.props.onLoad) {
+      this.props.onLoad()
+    }
   }
 
   render() {

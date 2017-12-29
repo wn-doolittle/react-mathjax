@@ -72,7 +72,7 @@ Context.propTypes = {
   delay: PropTypes.number,
   options: PropTypes.object,
   loading: PropTypes.node,
-  noGate: PropTypes.boolean
+  noGate: PropTypes.bool
 }
 
 Context.childContextTypes = {

@@ -5,6 +5,7 @@ React component to display math formulas written in AsciiMath or TeX.
 This is a fork of [react-mathjax](https://github.com/MatejMazur/react-mathjax) from MatejMazur which is itself a fork of [react-mathjax](https://github.com/SamyPesse/react-mathjax) from SamyPresse.
 
 This includes the following changes:
+* Text object which wraps a div that will re-render $$ escaped text characters when it's text prop changes
 * Context object is a gate, i.e. it does not render its children until the MathJax script has finished loading
   * this avoids the case when a MathJax.Node attempts to render before the Hub is available
     * also added an Error which is thrown when MathJax.Node can't find a Hub

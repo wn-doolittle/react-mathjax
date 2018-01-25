@@ -17,25 +17,39 @@ class Text extends React.Component {
     if (!MathJax) {
       throw Error("MathJax not found in context for controls");
     }
-    
-    const temp = initialized;
+
     MathJax.Hub.Queue(
       () => {
-        if (!temp) {
-          // I have no idea why we need to do this, but first time we ever run MathJax, we need to Reprocess
-          MathJax.Hub.Reprocess(this.div)
-        }
-
-        // Always do a PreProcess and Typeset afterwards
+        console.log("Reprocessing due to update in ");
+        console.log(this.div);
         try {
-          MathJax.Hub.PreProcess(this.div);
-          MathJax.Hub.Typeset(this.div);
+          MathJax.Hub.Reprocess()
         } catch (error) {
-          //ignore
+          console.log("mathjax error!");
+          console.warn(error);
         }
       }
     );
-    initialized = true;
+
+    // const temp = initialized;
+    // MathJax.Hub.Queue(
+    //   () => {
+    //     if (!temp) {
+    //       // I have no idea why we need to do this, but first time we ever run MathJax, we need to Reprocess
+    //       MathJax.Hub.Reprocess(this.div)
+    //     }
+
+    //     // Always do a PreProcess and Typeset afterwards
+    //     try {
+    //       MathJax.Hub.PreProcess(this.div);
+    //       MathJax.Hub.Typeset(this.div);
+    //     } catch (error) {
+    //       console.log("mathjax error!");
+    //       console.warn(error);
+    //     }
+    //   }
+    // );
+    // initialized = true;
   }
 
   render() {

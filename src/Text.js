@@ -23,7 +23,8 @@ class Text extends React.Component {
         console.log("Reprocessing due to update in ");
         console.log(this.div);
         try {
-          MathJax.Hub.Reprocess()
+          MathJax.Hub.PreProcess();
+          MathJax.Hub.Typeset();
         } catch (error) {
           console.log("mathjax error!");
           console.warn(error);

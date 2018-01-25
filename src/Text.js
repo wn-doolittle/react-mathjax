@@ -20,8 +20,6 @@ class Text extends React.Component {
 
     MathJax.Hub.Queue(
       () => {
-        console.log("Reprocessing due to update in ");
-        console.log(this.div);
         try {
           MathJax.Hub.PreProcess();
           MathJax.Hub.Typeset();

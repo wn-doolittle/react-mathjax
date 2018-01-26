@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types' ;
 
-let initialized = false;
-
 class Text extends React.Component {
   componentDidMount() {
     this.refreshMathJax();
@@ -20,6 +18,10 @@ class Text extends React.Component {
 
     MathJax.Hub.Queue(
       () => {
+        if (this.props.beforeTypeset) {
+          this.props.beforeTypeset();
+        }
+        
         try {
           MathJax.Hub.PreProcess();
           MathJax.Hub.Typeset();
@@ -29,26 +31,6 @@ class Text extends React.Component {
         }
       }
     );
-
-    // const temp = initialized;
-    // MathJax.Hub.Queue(
-    //   () => {
-    //     if (!temp) {
-    //       // I have no idea why we need to do this, but first time we ever run MathJax, we need to Reprocess
-    //       MathJax.Hub.Reprocess(this.div)
-    //     }
-
-    //     // Always do a PreProcess and Typeset afterwards
-    //     try {
-    //       MathJax.Hub.PreProcess(this.div);
-    //       MathJax.Hub.Typeset(this.div);
-    //     } catch (error) {
-    //       console.log("mathjax error!");
-    //       console.warn(error);
-    //     }
-    //   }
-    // );
-    // initialized = true;
   }
 
   render() {

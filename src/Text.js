@@ -16,7 +16,6 @@ class Text extends React.Component {
       throw Error("Could not find MathJax while attempting typeset! Probably MathJax script hasn't been loaded or MathJax.Context is not in the hierarchy")
     }
 
-    console.log(`Adding typeset to queue for: ${this.div}`);
     MathJax.Hub.Queue(
       MathJax.Hub.Typeset(this.div, this.props.onRender)
     );

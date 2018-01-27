@@ -12,10 +12,6 @@ class Node extends React.Component {
    */
   componentDidMount() {
     this.typeset()
-
-    if (!this.context.MathJax) {
-      throw Error("Could not find MathJax in componentDidMount! Probably MathJax script hasn't been loaded or MathJax.Context is not in the hierarchy")
-    }
   }
 
   /**
@@ -65,7 +61,7 @@ class Node extends React.Component {
    * @param { Boolean } forceUpdate
    */
   typeset(forceUpdate) {
-    const MathJax = this.context.MathJax
+    const { MathJax } = this.context
 
     if (!MathJax) {
       throw Error("Could not find MathJax while attempting typeset! Probably MathJax script hasn't been loaded or MathJax.Context is not in the hierarchy")

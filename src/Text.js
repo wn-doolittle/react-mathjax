@@ -13,23 +13,12 @@ class Text extends React.Component {
   refreshMathJax() {
     const { MathJax } = this.context;
     if (!MathJax) {
-      throw Error("MathJax not found in context for controls");
+      throw Error("Could not find MathJax while attempting typeset! Probably MathJax script hasn't been loaded or MathJax.Context is not in the hierarchy")
     }
 
+    console.log(`Adding reprocess to queue for: ${this.div}`);
     MathJax.Hub.Queue(
-      () => {
-        if (this.props.beforeTypeset) {
-          this.props.beforeTypeset();
-        }
-        
-        try {
-          MathJax.Hub.PreProcess();
-          MathJax.Hub.Typeset();
-        } catch (error) {
-          console.log("mathjax error!");
-          console.warn(error);
-        }
-      }
+      MathJax.Hub.Reprocess(this.div, this.props.onRender)
     );
   }
 
@@ -37,7 +26,7 @@ class Text extends React.Component {
     const { classes, options } = this.props;
 
     return (
-      <div ref={ (div) => this.div = div }>
+      <div key={ this.props.text } ref={ (div) => this.div = div }>
         { this.props.text }
       </div>
     );

@@ -46,7 +46,7 @@ class Context extends React.Component {
 
     MathJax.Hub.Register.MessageHook("Math Processing Error", (message) => {
       if (this.props.onError) {
-        this.props.onError(message);
+        this.props.onError(MathJax, message);
       }
     })
 

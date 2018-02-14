@@ -1,5 +1,7 @@
 # React MathJax
 
+[![npm version](https://badge.fury.io/js/react-mathjax2.svg)](https://badge.fury.io/js/react-mathjax2)
+
 React component to display math formulas written in AsciiMath or TeX.
 
 [Example of usage](/example.gif)

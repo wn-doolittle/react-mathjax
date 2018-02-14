@@ -6,7 +6,7 @@ React component to display math formulas written in AsciiMath or TeX.
 
 ## Install
 ```
-npm install https://github.com/wko27/react-mathjax --save
+npm install react-mathjax2 --save
 ```
 
 ## Usage

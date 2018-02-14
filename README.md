@@ -2,19 +2,7 @@
 
 React component to display math formulas written in AsciiMath or TeX.
 
-
-This includes the following changes:
-* Text object which wraps a div that will re-render $$ escaped text characters when it's text prop changes
-* Context object is a gate, i.e. it does not render its children until the MathJax script has finished loading
-  * this avoids the case when a MathJax.Node attempts to render before the Hub is available
-    * also added an Error which is thrown when MathJax.Node can't find a Hub
-  * there's a loading props one can use to specify children before loading
-  * one can also disable this behavior completely by setting noGate props to true
-* added an onLoad props to Context which triggers when the MathJax script finishes loading
-* cleanup of the MathJax.Hub.Queue calls to re-render a particular script tag
-
-![Example of usage](/example.gif)
-Based on the [react-mathjax](https://github.com/SamyPesse/react-mathjax) from SamyPesse. The main difference is in updated deps, syntax and extended options (delay of rendering and support for AsciiMath).
+-![Example of usage](/example.gif)
 
 ## Install
 ```
@@ -157,6 +145,15 @@ module.exports = () => {
 #### `options` (Object)
 - Sets [MathJax configuration](http://docs.mathjax.org/en/latest/options/index.html?highlight=hub.config#configuration-objects). 
 - Default: Official MathJax configuration
+
+#### `onLoad` (Function)
+- Triggered after MathJax script finishes loading (but BEFORE children are allowed to render if noGate is set to `false`)
+
+#### `onError` (Function)
+- Triggered when any [Math Processing Error](http://docs.mathjax.org/en/latest/advanced/debugging-tips.html#add-listener-for-mathjax-errors) occurs
+
+#### `noGate` (Boolean)
+- Defaults to `false`, controls whether to disallow rendering of children components until the MathJax script has finished loading
 
 ## Acknowledgements
 - This project was forked from [MatejMazur](https://github.com/MatejMazur) ([react-mathjax](https://github.com/MatejMazur/react-mathjax)).

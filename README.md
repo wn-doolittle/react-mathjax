@@ -2,7 +2,7 @@
 
 React component to display math formulas written in AsciiMath or TeX.
 
--![Example of usage](/example.gif)
+[Example of usage](/example.gif)
 
 ## Install
 ```

@@ -2,7 +2,6 @@
 
 React component to display math formulas written in AsciiMath or TeX.
 
-This is a fork of [react-mathjax](https://github.com/MatejMazur/react-mathjax) from MatejMazur which is itself a fork of [react-mathjax](https://github.com/SamyPesse/react-mathjax) from SamyPresse.
 
 This includes the following changes:
 * Text object which wraps a div that will re-render $$ escaped text characters when it's text prop changes
@@ -23,9 +22,106 @@ npm install https://github.com/wko27/react-mathjax --save
 ```
 
 ## Usage
+
+# Inline display of AsciiMath wrapped in delimiters
+
 ```jsx
 import MathJax from 'react-mathjax'
+
 const ascii = 'U = 1/(R_(si) + sum_(i=1)^n(s_n/lambda_n) + R_(se))'
+const content = `This can be dynamic text (e.g. user-entered) text with ascii math embedded in $$ symbols like $$${ascii}$$`
+
+module.exports = () => {
+    return (
+        <MathJax.Context
+            input='ascii'
+            onLoad={ () => console.log("Loaded MathJax script!") }
+            onError={ (MathJax, error) => {
+                console.warn(error);
+                console.log("Encountered a MathJax error, re-attempting a typeset!");
+                MathJax.Hub.Queue(
+                  MathJax.Hub.Typeset()
+                );
+            } }
+            script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=AM_HTMLorMML"
+            options={ {
+                asciimath2jax: {
+                     useMathMLspacing: true,
+                     delimiters: [["$$","$$"]],
+                     preview: "none",
+                }
+            } }
+        >
+            <MathJax.Text content={ content }/>
+        </MathJax.Context>
+    );
+}
+```
+# Inline display of AsciiMath without delimiters
+
+```jsx
+import MathJax from 'react-mathjax'
+
+const ascii = 'U = 1/(R_(si) + sum_(i=1)^n(s_n/lambda_n) + R_(se))'
+
+module.exports = () => {
+    return (
+        <div>
+            <MathJax.Context input='ascii'>
+                <div>
+                    This is an inline formula written in AsciiMath: <MathJax.Node inline>{ ascii }</MathJax.Node>
+                </div>
+            </MathJax.Context>
+        </div>
+    );
+}
+```
+
+# Block display of AsciiMath
+
+```jsx
+import MathJax from 'react-mathjax'
+
+const ascii = 'U = 1/(R_(si) + sum_(i=1)^n(s_n/lambda_n) + R_(se))'
+
+module.exports = () => {
+    return (
+        <div>
+            <MathJax.Context input='ascii'>
+                <div>
+                    <MathJax.Node>{ascii}</MathJax.Node>
+                </div>
+            </MathJax.Context>
+        </div>
+    );
+}
+```
+
+# Inline display of LaTeX
+
+```jsx
+import MathJax from 'react-mathjax'
+
+const tex = `f(x) = \\int_{-\\infty}^\\infty\\hat f(\\xi)\\,e^{2 \\pi i \\xi x}\\,d\\xi`
+
+module.exports = () => {
+    return (
+        <div>
+            <MathJax.Context input='tex'>
+                <div>
+                    This is an inline math formula: <MathJax.Node inline>{'a = b'}</MathJax.Node>
+                </div>
+            </MathJax.Context>
+        </div>
+    );
+}
+```
+
+# Block display of LaTeX
+
+```jsx
+import MathJax from 'react-mathjax'
+
 const tex = `f(x) = \\int_{-\\infty}^\\infty\\hat f(\\xi)\\,e^{2 \\pi i \\xi x}\\,d\\xi`
 
 module.exports = () => {
@@ -33,18 +129,6 @@ module.exports = () => {
         <div>
             <MathJax.Context input='ascii'>
                 <div>
-                    This is an inline math formula: <MathJax.Node inline>{'a = b'}</MathJax.Node>
-                    And a block one:
-
-                    <MathJax.Node>{ascii}</MathJax.Node>
-                </div>
-            </MathJax.Context>
-
-            <MathJax.Context input='tex'>
-                <div>
-                    This is an inline math formula: <MathJax.Node inline>{'a = b'}</MathJax.Node>
-                    And a block one:
-
                     <MathJax.Node>{tex}</MathJax.Node>
                 </div>
             </MathJax.Context>

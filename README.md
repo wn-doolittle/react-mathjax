@@ -42,7 +42,7 @@ module.exports = () => {
                 }
             } }
         >
-            <MathJax.Text content={ content }/>
+            <MathJax.Text text={ content }/>
         </MathJax.Context>
     );
 }
@@ -117,7 +117,7 @@ const tex = `f(x) = \\int_{-\\infty}^\\infty\\hat f(\\xi)\\,e^{2 \\pi i \\xi x}\
 module.exports = () => {
     return (
         <div>
-            <MathJax.Context input='ascii'>
+            <MathJax.Context input='tex'>
                 <div>
                     <MathJax.Node>{tex}</MathJax.Node>
                 </div>

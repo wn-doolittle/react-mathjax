@@ -16,7 +16,7 @@ npm install react-mathjax2 --save
 # Inline display of AsciiMath wrapped in delimiters
 
 ```jsx
-import MathJax from 'react-mathjax'
+import MathJax from 'react-mathjax2'
 
 const ascii = 'U = 1/(R_(si) + sum_(i=1)^n(s_n/lambda_n) + R_(se))'
 const content = `This can be dynamic text (e.g. user-entered) text with ascii math embedded in $$ symbols like $$${ascii}$$`
@@ -50,7 +50,7 @@ module.exports = () => {
 # Inline display of AsciiMath without delimiters
 
 ```jsx
-import MathJax from 'react-mathjax'
+import MathJax from 'react-mathjax2'
 
 const ascii = 'U = 1/(R_(si) + sum_(i=1)^n(s_n/lambda_n) + R_(se))'
 
@@ -70,7 +70,7 @@ module.exports = () => {
 # Block display of AsciiMath
 
 ```jsx
-import MathJax from 'react-mathjax'
+import MathJax from 'react-mathjax2'
 
 const ascii = 'U = 1/(R_(si) + sum_(i=1)^n(s_n/lambda_n) + R_(se))'
 
@@ -90,7 +90,7 @@ module.exports = () => {
 # Inline display of LaTeX
 
 ```jsx
-import MathJax from 'react-mathjax'
+import MathJax from 'react-mathjax2'
 
 const tex = `f(x) = \\int_{-\\infty}^\\infty\\hat f(\\xi)\\,e^{2 \\pi i \\xi x}\\,d\\xi`
 
@@ -110,7 +110,7 @@ module.exports = () => {
 # Block display of LaTeX
 
 ```jsx
-import MathJax from 'react-mathjax'
+import MathJax from 'react-mathjax2'
 
 const tex = `f(x) = \\int_{-\\infty}^\\infty\\hat f(\\xi)\\,e^{2 \\pi i \\xi x}\\,d\\xi`
 

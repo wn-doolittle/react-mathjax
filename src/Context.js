@@ -42,20 +42,20 @@ class Context extends React.Component {
       if (this.props.didFinishTypeset) {
         this.props.didFinishTypeset()
       }
+
+      if (this.props.onLoad) {
+        this.props.onLoad()
+      }
+
+      this.setState({
+        loaded: true
+      })
     })
 
     MathJax.Hub.Register.MessageHook("Math Processing Error", (message) => {
       if (this.props.onError) {
         this.props.onError(MathJax, message);
       }
-    })
-
-    if (this.props.onLoad) {
-      this.props.onLoad()
-    }
-
-    this.setState({
-      loaded: true
     })
   }
 

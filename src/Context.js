@@ -12,6 +12,7 @@ class Context extends React.Component {
     super(props)
     this.state = { loaded: false }
     this.onLoad = this.onLoad.bind(this)
+    this.preventLoad = false
   }
 
   getChildContext() {
@@ -31,7 +32,15 @@ class Context extends React.Component {
     loadScript(script, this.onLoad)
   }
 
+  componentWillUnmount(){
+    this.preventLoad = true
+  }
+
   onLoad() {
+    if (this.preventLoad) {
+      return
+    }
+
     const options = this.props.options
 
     MathJax.Hub.Config(options)

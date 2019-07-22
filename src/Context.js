@@ -34,18 +34,26 @@ class Context extends React.Component {
 
   componentWillUnmount(){
     this.preventLoad = true
+    
+    if (this.startupHook) {
+      MathJax.Hub.UnRegister.StartupHook(this.startupHook)
+    }
+
+    if (this.processingErrorHook) {
+      MathJax.Hub.UnRegister.MessageHook(this.processingErrorHook)
+    }
   }
+
 
   onLoad() {
     if (this.preventLoad) {
       return
     }
-
     const options = this.props.options
 
     MathJax.Hub.Config(options)
 
-    MathJax.Hub.Register.StartupHook('End', () => {
+    this.startupHook = MathJax.Hub.Register.StartupHook('End', () => {
       MathJax.Hub.processSectionDelay = this.props.delay
 
       if (this.props.didFinishTypeset) {
@@ -61,7 +69,7 @@ class Context extends React.Component {
       })
     })
 
-    MathJax.Hub.Register.MessageHook("Math Processing Error", (message) => {
+    this.processingErrorHook = MathJax.Hub.Register.MessageHook("Math Processing Error", (message) => {
       if (this.props.onError) {
         this.props.onError(MathJax, message);
       }

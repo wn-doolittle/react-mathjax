@@ -1,4 +1,4 @@
-# React MathJax
+# React MathJax 
 
 [![npm version](https://badge.fury.io/js/react-mathjax2.svg)](https://badge.fury.io/js/react-mathjax2)
 

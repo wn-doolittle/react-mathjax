@@ -7,6 +7,11 @@ const types = {
 }
 
 class Node extends React.Component {
+  constructor(props) {
+    super(props);
+    this.node = React.createRef();
+  }
+
   /**
    * Render the math once the node is mounted
    */
@@ -92,7 +97,7 @@ class Node extends React.Component {
     if (!this.script) {
       this.script = document.createElement('script')
       this.script.type = `math/${type}; ${inline ? '' : 'mode=display'}`
-      this.refs.node.appendChild(this.script)
+      this.node.current.appendChild(this.script)
     }
 
     if ('text' in this.script) {
@@ -104,7 +109,7 @@ class Node extends React.Component {
   }
 
   render() {
-    return React.createElement('span', { ref: 'node' })
+    return React.createElement('span', { ref: this.node })
   }
 }
 

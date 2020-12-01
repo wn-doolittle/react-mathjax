@@ -83,7 +83,7 @@ class Node extends React.Component {
     }
 
     MathJax.Hub.Queue(
-      MathJax.Hub.Reprocess(this.script, this.props.onRender)
+      () => MathJax.Hub.Reprocess(this.script, this.props.onRender)
     );
   }
 

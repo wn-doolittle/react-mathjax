@@ -17,7 +17,7 @@ class Text extends React.Component {
     }
 
     MathJax.Hub.Queue(
-      MathJax.Hub.Typeset(this.div, this.props.onRender)
+      () => MathJax.Hub.Typeset(this.div, this.props.onRender)
     );
   }
 

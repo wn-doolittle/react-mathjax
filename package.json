@@ -7,6 +7,9 @@
     "type": "git",
     "url": "git+https://github.com/wko27/react-mathjax.git"
   },
+  "publishConfig": {
+    "registry": "https://packagecloud.io/weldnorthanalytics/doolittle/npm/"
+  },
   "scripts": {
     "build": "babel --out-dir ./lib ./src"
   },

@@ -1,6 +1,6 @@
 {
-  "name": "react-mathjax2",
-  "version": "0.0.3",
+  "name": "@wn-doolittle/react-mathjax2",
+  "version": "0.0.4",
   "description": "React component for MathJax",
   "main": "./lib/index.js",
   "repository": {
@@ -8,7 +8,7 @@
     "url": "git+https://github.com/wko27/react-mathjax.git"
   },
   "publishConfig": {
-    "registry": "https://packagecloud.io/weldnorthanalytics/doolittle/npm/"
+    "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "build": "babel --out-dir ./lib ./src"

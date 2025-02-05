@@ -47,5 +47,8 @@
     "eslint": "^4.10.0",
     "eslint-plugin-react": "^7.4.0",
     "yallist": "^2.1.2"
+  },
+  "overrides": {
+    "yallist":"^2.1.2"
   }
 }

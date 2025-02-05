@@ -1,6 +1,6 @@
 {
   "name": "@wn-doolittle/react-mathjax2",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "React component for MathJax",
   "main": "./lib/index.js",
   "repository": {
@@ -45,10 +45,6 @@
     "babelify": "^8.0.0",
     "browserify": "^14.5.0",
     "eslint": "^4.10.0",
-    "eslint-plugin-react": "^7.4.0",
-    "yallist": "^2.1.2"
-  },
-  "overrides": {
-    "yallist":"^2.1.2"
+    "eslint-plugin-react": "^7.4.0"
   }
 }

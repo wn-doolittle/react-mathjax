@@ -8,7 +8,7 @@
     "url": "git+https://github.com/wko27/react-mathjax.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "@wn-doolittle:registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "build": "babel --out-dir ./lib ./src"
